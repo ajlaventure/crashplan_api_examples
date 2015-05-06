@@ -646,6 +646,7 @@ class c42Lib(object):
 		params['active'] = 'true'
 		params['incBackupUsage'] = 'true'
 		params['incHistory'] = 'true'
+		params['strKey'] = 'name'
 
 		payload = {}
 
@@ -1566,8 +1567,8 @@ class c42Lib(object):
 				if (isinstance (stufftowrite,(int))):
 					itemsToWriteeEncoded = stufftowrite
 			
-				elif stufftowrite is not None: 
-					itemsToWriteeEncoded = stufftowrite.encode('utf8') # encoding protects against crashes
+				elif stufftowrite is not None and isinstance (stufftowrite, 'unicode'): 
+					itemsToWriteeEncoded = stufftowrite.encode('utf-8') # encoding protects against crashes
 			
 				else:
 					itemsToWriteeEncoded = stufftowrite
@@ -1588,7 +1589,7 @@ class c42Lib(object):
 				itemsToWriteeEncoded = listtowrite.encode
 			
 			else: #All other cases
-				itemsToWriteeEncoded = listtowrite.encode('utf8') # encoding protects against crashes
+				itemsToWriteeEncoded = listtowrite.encode('utf-8', errors='replace') # encoding protects against crashes
 			
 			writestring = writestring + str(itemsToWriteeEncoded) + ','
 			writestring = writestring[:-1] + "\n" # Remove an extra space at the end of the string and append a return
