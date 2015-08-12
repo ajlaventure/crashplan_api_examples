@@ -1,7 +1,7 @@
 # File: c42SharedLibary.py
 # Author: AJ LaVenture, 
 # Contributions: Paul Hirst, Code 42 Software
-# Last Modified: 02-13-2015
+# Last Modified: 08-12-2015
 #
 # Common and reused functions to allow for rapid script creation
 #
@@ -254,7 +254,7 @@ class c42Lib(object):
 	@staticmethod
 	def getUsersPaged(pgNum,params):
 	    logging.info("getUsersPaged-params:pgNum[" + str(pgNum) + "]")
-
+	    params = {}
 	    # headers = {"Authorization":getAuthHeader(cp_username,cp_password)}
 	    # url = cp_host + ":" + cp_port + cp_api_user
 	    params['pgNum'] = str(pgNum)
